@@ -1,4 +1,4 @@
-//BeEF node.js RESTful API authentication and request:
+//Node.js Access for BeEF RESTful API
 //By: Dan Popp (dan@comeandget.me) */* December 2012
 
 var beef = require('http');
