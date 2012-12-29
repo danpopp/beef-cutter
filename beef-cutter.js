@@ -33,7 +33,7 @@ var reqPost = beef.request(optionspost, function(res) {
                 };
                 var reqGet = beef.request(optionsgetmsg, function(res) {
                         res.on('data', function(beefchunk) {
-                                console.info('BODY: ' + beefchunk);
+                                console.info('BODY: ' + beefchunk + '\n');
                                 var beefjson = JSON.parse(beefchunk);
                                 console.info(beefjson['hooked-browsers']);
                         });
