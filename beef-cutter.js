@@ -35,7 +35,7 @@ var reqPost = beef.request(optionspost, function(res) {
                         res.on('data', function(beefchunk) {
                                 console.info('BODY: ' + beefchunk + '\n');
                                 var beefjson = JSON.parse(beefchunk);
-                                console.info('hooked-browsers' + beefjson['hooked-browsers']);
+                                console.info(beefjson['hooked-browsers']);
                         });
 
                 });
