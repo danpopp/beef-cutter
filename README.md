@@ -1,7 +1,7 @@
 beef-cutter
 ===========
 
-Node.js RESTful API access for BeEF (Browser Exploitation Framework)
+Node.js RESTful API access for BeEF, the Browser Exploitation Framework (https://github.com/beefproject/beef)
 
 Uses Commander.js (https://github.com/visionmedia/commander.js )
 
