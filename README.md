@@ -14,8 +14,8 @@ Uses commander.js (https://github.com/visionmedia/commander.js).
     $ node beef-cutter.js [options] 
     
 ## Options
-    -X Show offline clients by IP.
-    -o Show online clients by IP.
-    -X Show offline clients with page URI included.
-    -O Show online clients with page URI included.
+    -X (lower-case) Show offline clients by IP.
+    -o (lower-case) Show online clients by IP.
+    -X (upper-case) Show offline clients with page URI included.
+    -O (upper-case) clients with page URI included.
   
