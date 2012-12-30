@@ -22,5 +22,5 @@ lower-case:
 upper-case:
 
     -X  Show offline clients with page URI included.
-    -O  clients with page URI included.
+    -O  Show online clients with page URI included.
   
