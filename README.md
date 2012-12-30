@@ -14,12 +14,12 @@ Uses commander.js (https://github.com/visionmedia/commander.js).
     $ node beef-cutter.js [options] 
     
 ## Options
-(lower-case)
+lower-case:
 
     -X  Show offline clients by IP.
     -o  Show online clients by IP.
     
-(upper-case)
+upper-case:
 
     -X  Show offline clients with page URI included.
     -O  clients with page URI included.
