@@ -53,96 +53,96 @@ var reqPost = beef.request(optionspost, function(res) {
                 };
                 
 var reqGet = beef.request(optionsgetmsg, function(res) {
-                        if (program.local){
-				console.log('\nShowing ONLINE hosts (LAN-only):');
-				res.on('data', function(beefchunk) {
-                                console.log('\nIP ADDRESS:\t\t MAC ADDRESS:\t\t\tDEVICE URI:');
-                                var beefjson = JSON.parse(beefchunk);
-                                var hookedlist = (beefjson['hooked-browsers'].online);
-                                for (i in hookedlist)
-                                {
-				var util = require('util'),
-				exec = require('child_process').exec,
-				child;
-				child = exec('/usr/sbin/arp | grep ' + hookedlist[i].ip + '| awk \'{print $1"\t\t "$3"\t\t' + hookedlist[i].page_uri + '"}\'| tr -d "\n"',
-					function (error, stdout, stderr) {
-						if (program.debug){
-						var output = stdout.split(/(\r?\n)/g);
-						}
-						else
-						{
-						var output = stdout.replace(/\n$/, '')
-						}
-						//required to prevent empty lines when processing stdout
-						if (output != '')
-						{
-						console.log(output);
-						}
-						
-						if (program.debug){
-						console.log('error: ' + stderr);
-						if (error !== null) {
-							console.log('exec error: ' + error);
-						}
-						}
-					});
+	if (program.local){
+		console.log('\nShowing ONLINE hosts (LAN-only):');
+		res.on('data', function(beefchunk) {
+                console.log('\nIP ADDRESS:\t\t MAC ADDRESS:\t\t\tDEVICE URI:');
+                var beefjson = JSON.parse(beefchunk);
+                var hookedlist = (beefjson['hooked-browsers'].online);
+                for (i in hookedlist)
+                {
+		var util = require('util'),
+		exec = require('child_process').exec,
+		child;
+		child = exec('/usr/sbin/arp | grep ' + hookedlist[i].ip + '| awk \'{print $1"\t\t "$3"\t\t' + hookedlist[i].page_uri + '"}\'| tr -d "\n"',
+			function (error, stdout, stderr) {
+				if (program.debug){
+				var output = stdout.split(/(\r?\n)/g);
 				}
-                        });
-			}				
-			if (program.online){
-                        	res.on('data', function(beefchunk) {
-                                console.log('\nShowing all ONLINE hosts:\n');
-				var beefjson = JSON.parse(beefchunk);
-                                var hookedlist = (beefjson['hooked-browsers'].online);
-                                console.info('IP ADDRESS:');
-                                for (i in hookedlist)
-                                {
-                                console.log(hookedlist[i].ip + '\r');
-                                }
-                        });
-			}
-			if (program.fullon){
-                     		res.on('data', function(beefchunk) {
-                                console.log('\nShowing all ONLINE hosts:\n');
-								var beefjson = JSON.parse(beefchunk);
-                                var hookedlist = (beefjson['hooked-browsers'].online);
-                                console.info('IP ADDRESS:\t\tDEVICE URI:');
-                                for (i in hookedlist)
-                                {
-                                console.log(hookedlist[i].ip + '\t\t' + hookedlist[i].page_uri + '\r');
-                                }
-                        });
-			}
-			if (program.offline){
-				res.on('data', function(beefchunk) {
-                                console.log('\nShowing OFFLINE hosts:\n');
-				var beefjson = JSON.parse(beefchunk);
-                                var hookedlist = (beefjson['hooked-browsers'].offline);
-                                console.info('IP ADDRESS:\r');
-                                for (i in hookedlist)
-                                {
-                                console.log(hookedlist[i].ip + '\r');
-                                }
+				else
+				{
+				var output = stdout.replace(/\n$/, '')
+				}
+				//required to prevent empty lines when processing stdout
+				if (output != '')
+				{
+				console.log(output);
+				}
+				
+				if (program.debug){
+				console.log('error: ' + stderr);
+				if (error !== null) {
+				console.log('exec error: ' + error);
+				}
+				}
 			});
-			}
-			if (program.fulloff){
-        	                res.on('data', function(beefchunk) {
-                                console.log('\nShowing OFFLINE hosts:\n');
-				var beefjson = JSON.parse(beefchunk);
-                                var hookedlist = (beefjson['hooked-browsers'].offline);
-                                console.info('IP ADDRESS:\tDEVICE URI:');
-                                for (i in hookedlist)
-                                {
-                                console.log(hookedlist[i].ip + '\t\t' + hookedlist[i].page_uri + '\r');
-                                }
-                        });
-			}
+		}
+	});
+	}				
+	if (program.online){
+        	res.on('data', function(beefchunk) {
+                console.log('\nShowing all ONLINE hosts:\n');
+		var beefjson = JSON.parse(beefchunk);
+                var hookedlist = (beefjson['hooked-browsers'].online);
+                console.info('IP ADDRESS:');
+                for (i in hookedlist)
+                {
+                console.log(hookedlist[i].ip + '\r');
+                }
                 });
-                reqGet.end();
-                reqGet.on('error', function(e) {
-                        console.error(e);
+	}
+	if (program.fullon){
+		res.on('data', function(beefchunk) {
+                console.log('\nShowing all ONLINE hosts:\n');
+		var beefjson = JSON.parse(beefchunk);
+                var hookedlist = (beefjson['hooked-browsers'].online);
+                console.info('IP ADDRESS:\t\tDEVICE URI:');
+                for (i in hookedlist)
+                {
+                console.log(hookedlist[i].ip + '\t\t' + hookedlist[i].page_uri + '\r');
+                }
                 });
+	}
+	if (program.offline){
+		res.on('data', function(beefchunk) {
+                console.log('\nShowing OFFLINE hosts:\n');
+		var beefjson = JSON.parse(beefchunk);
+                var hookedlist = (beefjson['hooked-browsers'].offline);
+                console.info('IP ADDRESS:\r');
+                for (i in hookedlist)
+                {
+                console.log(hookedlist[i].ip + '\r');
+                }
+		});
+	}
+	if (program.fulloff){
+        	res.on('data', function(beefchunk) {
+                console.log('\nShowing OFFLINE hosts:\n');
+		var beefjson = JSON.parse(beefchunk);
+		var hookedlist = (beefjson['hooked-browsers'].offline);
+		console.info('IP ADDRESS:\tDEVICE URI:');
+                for (i in hookedlist)
+                {
+                console.log(hookedlist[i].ip + '\t\t' + hookedlist[i].page_uri + '\r');
+                }
+                });
+	}
+	});
+	reqGet.end();
+        reqGet.on('error', function(e) {
+        	console.error(e);
         });
+	});
 });
 reqPost.write(beefObject);
 reqPost.end();
