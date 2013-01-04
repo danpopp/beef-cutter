@@ -18,7 +18,7 @@ Uses commander.js (https://github.com/visionmedia/commander.js).
 
     -h, --help     output usage information
     -V, --version  output the version number
-    -l, --local    Show connected clients on the LAN.
+    -l, --local    Show connected clients on the LAN by MAC address.
     -o, --online   List online hosts by IP only.
     -O, --fullon   List online hosts with device URI included.
     -x, --offline  List offline hosts by IP only.
