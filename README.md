@@ -13,14 +13,14 @@ Uses commander.js (https://github.com/visionmedia/commander.js).
 ## Usage
     $ node beef-cutter.js [options] 
     
-## Options
-lower-case:
 
-    -X  Show offline clients by IP.
-    -o  Show online clients by IP.
-    
-upper-case:
+## Options:
 
-    -X  Show offline clients with page URI included.
-    -O  Show online clients with page URI included.
-  
+    -h, --help     output usage information
+    -V, --version  output the version number
+    -l, --local    Show connected clients on the LAN.
+    -o, --online   List online hosts by IP only.
+    -O, --fullon   List online hosts with device URI included.
+    -x, --offline  List offline hosts by IP only.
+    -X, --fulloff  List offline hosts with device URI included.
+    -d, --debug    Show debugging info.
